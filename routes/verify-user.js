@@ -3,7 +3,7 @@ const router = express.Router()
 
 router.get("/verify",(req,res)=>{
    
-   res.render("form.ejs")
+   res.render("verifyForm",{title:"Verify"})
    console.log("Verify ROuter")
 
 })
@@ -14,7 +14,7 @@ router.post("/verify",(req,res)=>{
     const re = /[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
     if(re.test(email)){
    //   res.send(JSON.stringify({"message":"E-mail verified","success":true}))
-   res.render("index")
+   res.render("index",{title:"Homepage"})
     }else{
      res.send(JSON.stringify({"message":"Try a valid email","success":false}))
     }

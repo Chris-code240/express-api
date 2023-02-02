@@ -1,0 +1,17 @@
+                                                Welcome to My Express API
+This api is extirely developed with node js without any frontend framework like React or Angular
+
+All `POST` endpoints return Json reponse and `GET`, returning templates
+
+`GET /`
+    This return the verification/sign in page. User is expected to fill in his/her credentials for verification in order to get to the homepage.
+
+`POST /`
+    Returns null(Not Implemeted)
+
+
+`GET /verify`
+    This endpoint redirects to the `GET /`
+
+`POST /verify`
+    Accompanied with dataset in Json format of {"email":USER_EMAIL,"password":USER_PASSWORD}, a request to this endpoint returns the homepage after a SUCCESSFULL verification.
