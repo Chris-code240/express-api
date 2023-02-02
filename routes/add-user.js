@@ -1,24 +1,20 @@
 const express = require("express")
 const router = express.Router()
-
+const pool = require("../database")
 router.get("/add",(req,res)=>{
    res.render("add-user-form",{title:"Add User"})
 })
 
 
 router.post('/add',(req,res)=>{
-  const pg = require("pg")
-  const pool = new pg.Pool({
-    connectionString: "postgres://postgres:Liukangs240@localhost:5432/express_api"
-  })
-
+  
   let fetched_data = {}
 
   pool.connect((err,client,release)=>{
     if(err){
         console.log(err)
     }else{
-        client.query('SELECT * FROM user_table WHERE email = $1;',['duah.marfochristian@gmail.com'],(err,result)=>{
+        client.query('SELECT * FROM user_table WHERE email = $1 AND password = $2 AND user_name = $3;',[req.body['email'],req.body['password'],req.body['user_name']],(err,result)=>{
             if(err){
                 console.log(err)
             }else{
